@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Spotify</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Barlow|Barlow+Condensed&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <style>
+            html {
+                overflow-x: hidden;
+            }
+
+            h1 {
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+            }
+            .body-wrapper {
+                max-width: 100%;
+            }
+
+            .body-wrapper .col-sm-2 {
+                height: auto;
+            }
+            .body-wrapper .col-sm-10 {
+                height: auto;
+            }
+
+            .card {
+                border: 0;
+                margin: 1px;
+            }
+
+            .card-body {
+                background: blueviolet;
+                align-content: center;
+                text-align: center;
+                color: white;
+                
+            }
+            .logo {
+                width: 100px;
+            }
+
+            .material-icons.md-light { 
+                color: rgba(255, 255, 255, 1); 
+                }
+
+            .footer-wrapper {
+                padding-top: 200px;
+            }
+
+            .footer-wrapper .btn {
+                font-family: Raleway-SemiBold;
+                font-size: 13px;
+                color: rgba(240, 173, 78, 0.75);
+                letter-spacing: 1px;
+                line-height: 15px;
+                border: 2px solid rgb(255, 255, 255);
+                border-radius: 40px;
+                transition: all 0.3s ease 0s;
+               
+            }
+
+            .footer-wrapper .btn:hover {
+                color: #FFF;
+                background: blueviolet;
+                border: 2px solid black;
+                }
+
+            #btn1 {
+                color: black;
+            }
+
+            #btn2 {
+                color: white;
+            }
+
+            .hor-nav a {
+                font-family: 'Barlow Condensed', sans-serif;
+            }
+
+            .hor-nav a:active {
+                text-decoration: underline;
+                text-decoration-color: chartreuse;
+                color: blue !important;
+            }
+
+
+        </style>
+</head>
+  <body>
+
+        <div class="body-wrapper">
+                <div class="row">
+                  <div class="col-sm-2" style="background: black">
+                    <div class="container logo-wrapper">
+                        <img class="logo ml-3 mt-3" src="./img/logo.png" alt="Logo"> 
+                    </div>
+                    <div class="container vertical-menu pt-3">
+                        <nav class="nav flex-column">
+                            <a class="nav-link active text-white" href="#"><i class="material-icons mr-1">home</i><span class="ml-1">Home</span></a>
+                            <a class="nav-link text-white" href="#"><i class="material-icons mr-1">search</i><span class="ml-1">Search</span></a>
+                            <a class="nav-link text-white" href="#"><i class="material-icons mr-1">local_library</i><span class="ml-1">Your Library</span></a>
+                        </nav>
+                    </div>
+                    <!--Footer item-->
+                    <div class="footer-wrapper">
+                            <div class="row">
+                              <div class="col pt-5 mt-5 bt-5" style="background: black">
+                                <div class="container login-wrapper p-3">
+                                    <button id="btn1" type="button" class="btn btn-light btn-sm btn-block">SIGN UP</button>
+                                    <button id="btn2" type="button" class="btn btn-secondary btn-sm btn-block">LOGIN</button> 
+                                </div>
+                                <!-- <div class="vertical-menu pt-3">
+                                    <nav class="nav flex-column">
+                                        <a class="nav-link active text-white" href="#"><i class="material-icons m-1">home</i><span class="m-1">Home</span></a>
+                                        <a class="nav-link text-white" href="#"><i class="material-icons m-1">search</i><span class="m-1">Search</span></a>
+                                        <a class="nav-link text-white" href="#"><i class="material-icons">local_library</i><span class="m-1">Your Library</span></a>
+                                    </nav>
+                                </div> -->
+                                <div class="container footer-nav mb-3">
+                                    <p class="text-white"><a class="text-white" href="#">Cookie</a> | <a class="text-white" href="#">Privacy Policy</a></p>
+                                </div>
+                              </div>
+                              <!-- <div class="col-sm-10" style="background: blueviolet"></div> -->
+                            </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-10" style="background: blueviolet">
+                    <div class="hor-nav">
+                        <ul class="nav justify-content-center">
+                                <li class="nav-item">
+                                  <a class="nav-link active text-white" href="#">TRENDING</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link text-white" href="#">PODCAST</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link text-white" href="#">MOODS AND GENRES</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link text-white" href="#">NEW RELEASES</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link text-white" href="#">DISCOVER</a>
+                                </li>
+                              </ul>
+                    </div>
+
+                    <!--Image show-->
+
+                    <div class="container heading mt-5"><h1 class="text-white">#THROWBACKTHURSDAY</h1></div>
+
+                    <div class="container card-deck">
+                            <div class="card">
+                              <img src="./img/premium-img1.jpg" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title">Good Music</h5>
+                              </div>
+                            </div>
+                            <div class="card">
+                              <img src="./img/premium-img2.jpg" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title">Latest Music</h5>
+                              </div>
+                            </div>
+                            <div class="card">
+                              <img src="./img/premium-img3.jpg" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title">Favourite Hits</h5>
+                              </div>
+                            </div>
+                            <div class="card">
+                              <img src="./img/premium-img4.jpg" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                 <h5 class="card-title">African Specials</h5>
+                              </div>
+                            </div>
+                          </div>
+
+                    <!--Next Line-->
+
+                    <div class="container heading"><h3 class="text-white">Classifiche</31></div>
+
+                    <div class="container card-deck">
+                            <div class="card">
+                              <img src="./img/premium-img1.jpg" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title">Good Music</h5>
+                              </div>
+                            </div>
+                            <div class="card">
+                              <img src="./img/premium-img2.jpg" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title">Latest Music</h5>
+                              </div>
+                            </div>
+                            <div class="card">
+                              <img src="./img/premium-img3.jpg" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title">Favourite Hits</h5>
+                              </div>
+                            </div>
+                            <div class="card">
+                              <img src="./img/premium-img4.jpg" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                 <h5 class="card-title">African Specials</h5>
+                              </div>
+                            </div>
+                          </div>
+
+                </div>
+                </div>
+        </div>
+
+        <!--Footer Area-->
+        <!-- <div class="footer-wrapper">
+                <div class="row">
+                  <div class="col-sm-2" style="background: black">
+                    <div class="container login-wrapper p-3">
+                        <button id="btn1" type="button" class="btn btn-light btn-sm btn-block">SIGN UP</button>
+                        <button id="btn2" type="button" class="btn btn-secondary btn-sm btn-block">LOGIN</button> 
+                    </div>
+                     <div class="vertical-menu pt-3">
+                        <nav class="nav flex-column">
+                            <a class="nav-link active text-white" href="#"><i class="material-icons m-1">home</i><span class="m-1">Home</span></a>
+                            <a class="nav-link text-white" href="#"><i class="material-icons m-1">search</i><span class="m-1">Search</span></a>
+                            <a class="nav-link text-white" href="#"><i class="material-icons">local_library</i><span class="m-1">Your Library</span></a>
+                        </nav>
+                    </div> -->
+                   <!-- <div class="container footer-nav mb-3">
+                        <p class="text-white"><a class="text-white" href="#">Cookie</a> | <a class="text-white" href="#">Privacy Policy</a></p>
+                    </div>
+                  </div>
+                   <div class="col-sm-10" style="background: blueviolet"></div> -->
+               <!-- </div>
+        </div> -->
+        
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+
+<!-- TRENDING
+PODCAST
+MOODS AND GENRES
+NEW RELEASES
+DISCOVER -->
+</html>
