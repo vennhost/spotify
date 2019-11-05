@@ -22,6 +22,32 @@
             h1 {
                 font-family: Verdana, Geneva, Tahoma, sans-serif;
             }
+
+            #albumImage {
+              position: relative;
+              display: inline-block;
+            }
+
+            #albumImage .trackTitle {
+              position: absolute;
+              width: 100%;
+              text-align: left;
+              bottom: 0;
+              left: 0;
+              
+            }
+
+            #albumImage img {
+              position: initial;
+              padding-bottom: 10px;
+            }
+
+            div#albums {
+              overflow: scroll;
+              height: 500px;
+            }
+
+                      
             .body-wrapper {
                 max-width: 100%;
             }
@@ -83,8 +109,11 @@
                 color: white;
             }
 
-            .hor-nav a {
+            .navbar a {
                 font-family: 'Barlow Condensed', sans-serif;
+                justify-content: center;
+                font-size: 12px;
+                
             }
 
             .hor-nav a:active {
@@ -129,7 +158,7 @@
                     </div>
                   </div>
                   <div class="col-sm-10" style="background: blueviolet">
-                    <div class="hor-nav">
+                    <!-- <div class="hor-nav">
                         <ul class="nav justify-content-center">
                                 <li class="nav-item">
                                   <a class="nav-link active text-white" href="#">TRENDING</a>
@@ -147,13 +176,50 @@
                                   <a class="nav-link text-white" href="#">DISCOVER</a>
                                 </li>
                               </ul>
-                    </div>
+                    </div> -->
+
+                    <nav class="navbar navbar-expand-lg navbar-light bg-transparent justify-content-end">
+ 
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                              <span class="navbar-toggler-icon"></span>
+                            </button>
+                          
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            
+                           <ul class="nav justify-content-center ml-5 pl-5">
+                                                          <li class="nav-item">
+                                                            <a class="nav-link active text-white" href="#">TRENDING</a>
+                                                          </li>
+                                                          <li class="nav-item">
+                                                            <a class="nav-link text-white" href="#">PODCAST</a>
+                                                          </li>
+                                                          <li class="nav-item">
+                                                            <a class="nav-link text-white" href="#">MOODS AND GENRES</a>
+                                                          </li>
+                                                          <li class="nav-item">
+                                                            <a class="nav-link text-white" href="#">NEW RELEASES</a>
+                                                          </li>
+                                                          <li class="nav-item">
+                                                            <a class="nav-link text-white" href="#">DISCOVER</a>
+                                                          </li>
+                                                        </ul>
+                                              </div>
+                                            </nav>
 
                     <!--Image show-->
 
-                    <div class="container heading mt-5"><h1 class="text-white">#THROWBACKTHURSDAY</h1></div>
+                    <div class="container heading mt-5"><h1 class="text-white">#THROWBACKTHURSDAY</h1> <hr /> <button type="submit" class="btn btn-primary m-2" onclick="listAlbum()">List Album</button><button type="submit" class="btn btn-primary m-2" onclick="count()">Count Unique</button> <hr /></div>
 
-                    <div class="container card-deck">
+                    <div id="albumList" class="row">
+                      <p id="count"></p>
+                      <ul id="listItem">
+
+                      </ul>
+                    </div>
+
+                    <div id="albums" class="row no-gutters"></div>
+
+                    <!-- <div class="container card-deck">
                             <div class="card">
                               <img src="./img/premium-img1.jpg" class="card-img-top" alt="...">
                               <div class="card-body">
@@ -179,8 +245,10 @@
                               </div>
                             </div>
                           </div>
-
+ -->
                     <!--Next Line-->
+
+                    <!-- <Div id class="row"></Div>
 
                     <div class="container heading"><h3 class="text-white">Classifiche</31></div>
 
@@ -213,7 +281,7 @@
 
                 </div>
                 </div>
-        </div>
+        </div> -->
         
 
         <!--Footer Area-->
@@ -237,8 +305,8 @@
                       <input type="password" class="form-control" id="loginPassword" placeholder="Password">
                     </div>
                     <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                      <input type="checkbox" class="form-check-input" id="loginCheck">
+                      <label class="form-check-label" for="loginCheck">Check me out</label>
                     </div>
                     <button type="submit" class="btn btn-primary m-2" id="submit" onclick="validate()">Login</button>
                   </form>
@@ -270,8 +338,8 @@
                       <input type="password" class="form-control" id="password" placeholder="Password">
                     </div>
                     <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      <label class="form-check-label" for="exampleCheck1">I accept terms and conditions</label>
+                      <input type="checkbox" class="form-check-input" id="terms">
+                      <label class="form-check-label" for="terms">I accept terms and conditions</label>
                     </div>
                     <button type="submit" class="btn btn-primary m-2">Sign up</button>
                   </form>
@@ -310,7 +378,117 @@
                 return false;
                 }
                 }
+            };
+
+            function loadMusicA(){
+              fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem", {
+                headers: {
+                  "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+                  "X-RapidAPI-Key": "9f3fc73abemsh2482bf2a9ace40bp19cd74jsn7a75d8a0bae1"
+                },
+                method: "GET"
+              }).then(function(res){
+                  return res.json()
+              }).then(function(tracks){
+                  console.log(tracks)
+                  var albumsDiv = document.querySelector("#albums")
+                  albumsDiv.innerHTML = "";
+                  tracks.data.forEach(track => {
+                  albumsDiv.innerHTML += `
+                <div id="albumImage" class="col-sm-8 col-md-4 col-lg-2 text-white">
+                    
+                    <img class="img-fluid no-gutters" src="${track.album.cover}" />
+                    <p class="trackTitle">${track.title_short} </p>
+                </div>
+            `
+
+                })
+              });
             }
+
+            function loadMusicB(){
+              fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=metallica", {
+                headers: {
+                  "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+                  "X-RapidAPI-Key": "9f3fc73abemsh2482bf2a9ace40bp19cd74jsn7a75d8a0bae1"
+                },
+                method: "GET"
+              }).then(function(res){
+                  return res.json()
+              }).then(function(tracks){
+                  console.log(tracks)
+                  var albumsDiv = document.querySelector("#albums")
+                  albumsDiv.innerHTML = "";
+                  tracks.data.forEach(track => {
+                  albumsDiv.innerHTML += `
+                <div id="albumImage" class="col-sm-8 col-md-4 col-lg-2 text-white no-gutters">
+                  
+                    <img class="img-fluid no-gutters" src="${track.album.cover}" />
+                    <p class="trackTitle">${track.title_short} </p>
+                </div>
+            `
+
+                })
+              });
+            }
+
+
+            function loadMusicC(){
+              fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=behemoth", {
+                headers: {
+                  "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+                  "X-RapidAPI-Key": "9f3fc73abemsh2482bf2a9ace40bp19cd74jsn7a75d8a0bae1"
+                },
+                method: "GET"
+              }).then(function(res){
+                  return res.json()
+              }).then(function(tracks){
+                  console.log(tracks)
+                  var albumsDiv = document.querySelector("#albums")
+                  albumsDiv.innerHTML = "";
+                  tracks.data.forEach(track => {
+                  albumsDiv.innerHTML += `
+                <div id="albumImage" class="col-sm-8 col-md-4 col-lg-2 text-white">
+                    
+                    <img class="img-fluid" src="${track.album.cover}" />
+                    <p class="trackTitle">${track.title_short} </p>
+                </div>
+            `
+
+                })
+              });
+            }
+
+            function listAlbum() {
+              var liWrapper = document.querySelector("#listItem");
+              
+              var listTitles = document.querySelector(".trackTitle");
+              
+                titles = document.createElement("li");
+                titles.appendChild(listTitles);
+                liWrapper.appendChild(titles);
+              
+            }
+
+
+            function count() {
+              var count = document.images.length;
+              var para = document.createElement("p");
+              var node = document.createTextNode("We have " + count + " unique albums as at " + new Date);
+              para.appendChild(node);
+
+              var element = document.querySelector("#count");
+              element.appendChild(para);
+              
+    }
+            
+
+            window.onload = function () {
+              loadMusicA()
+              loadMusicB()
+              loadMusicC()
+            }
+        
       </script>
 </body>
 
